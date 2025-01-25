@@ -1,0 +1,25 @@
+{
+  "name": "vue-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "mongodb": "^6.12.0",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "dev": "npm run lint && nodemon ./src/index.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "eslint": "^9.19.0",
+    "globals": "^15.14.0"
+  }
+}
