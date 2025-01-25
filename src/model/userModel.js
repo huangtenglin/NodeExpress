@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         set: (value) => jiami(value), //  // 对用户进进行密码加密处理,
-        select: false, // 表示对密码字段在查询的时候，不返回，保证用户的密码安全
+        // select: false, // 表示对密码字段在查询的时候，不返回，保证用户的密码安全
     },
     phone:{
         type: String,

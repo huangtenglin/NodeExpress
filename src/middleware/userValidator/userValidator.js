@@ -41,10 +41,7 @@ const loginParams = [
             return Promise.reject("用户名不存在")
         }
     }),
-    body("password").notEmpty().withMessage("密码不能为空").bail().custom( async (password) =>{
-        // 对password和数据库中的password进行对比，如果password错误，则提示密码错误
-        console.log("password")
-    }),
+    body("password").notEmpty().withMessage("密码不能为空").bail(),
     body("email").notEmpty().withMessage("邮箱不能为空").bail().isEmail().withMessage("邮箱格式不正确").bail(),
 ]
 
