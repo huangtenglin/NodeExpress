@@ -60,9 +60,6 @@ const loginController = async (req,res) =>{
     let dbData = await User.findOne({username});
     // 生成token值
    if(dbData){
-    const a = 2;
-    a = 3;
-
     return res.status(200).json({
       code: 200,
       msg: "用户登录成功",

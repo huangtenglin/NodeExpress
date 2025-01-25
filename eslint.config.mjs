@@ -3,19 +3,21 @@ import pluginJs from "@eslint/js";
 
 
 /** @type {import('eslint').Linter.Config[]} */
-export default [{
+export default [
+  pluginJs.configs.recommended,
+  {
     files: ["**/*.js"],
     languageOptions: {
-      sourceType: "commonjs"
+      sourceType: "commonjs",
     },
-    rules: {
-      "no-unused-vars": "warn", // 设置 no-unused-vars 规则为警告
+    rules:{
+      "no-unused-vars": "off"
     },
   },
   {
     languageOptions: {
-      globals: globals.browser
+      globals: globals.node,
+      
     }
   },
-  pluginJs.configs.recommended,
 ];

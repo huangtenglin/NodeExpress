@@ -4,7 +4,6 @@ const router = require("./router")
 const cors = require("cors");
 const connectToMongoDB = require("./model")
 const app = express();
-const { process } = require("process");
 
 
 // 处理请求体
