@@ -1,6 +1,7 @@
 const User = require("../model/userModel");
 const { jiami } = require("../utils/md5");
 const jwt = require("jsonwebtoken")
+const { createToken } = require("../utils/jwt");
 
 const registerController = async (req, res) => {
   try {
@@ -64,9 +65,10 @@ const loginController = async (req,res) =>{
       let result = jiami(password) === dbData.password // 判断当前用户输入的密码是否跟数据库的密码一致
       if(result) {
         // 删除密码
-        delete deData.password;
+        delete dbData.password;
+        dbData = dbData.toJSON();
         // 生成token值
-        dbData.token  = jwt.sign(dbData,"dasixiaoriben")
+        dbData.token = await createToken(dbData)
         return res.status(200).json({
           code: 200,
           msg: "用户登录成功",

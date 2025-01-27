@@ -3,6 +3,7 @@ const router = express.Router();
 const { registerController,getUsersController,loginController } = require("../controller/user")
 const check = require("../utils/check.js")
 const { registerValidator,loginValidator } = require("../middleware/userValidator/userValidator")
+const { verifyToken } = require("../utils/jwt.js")
 
 // 中间件验证手机号码/邮箱验证
 
@@ -25,7 +26,7 @@ const validatePhoneMiddleware = (req,res,next) =>{
 }
 
 router.post("/register",registerValidator ,registerController)
-router.get("/",getUsersController)
+router.get("/",verifyToken,getUsersController)
 router.post("/login", loginValidator,loginController)
 
 

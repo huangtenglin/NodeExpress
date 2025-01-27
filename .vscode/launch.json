@@ -1,0 +1,29 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+        // 调试器的类型
+        "type": "node",
+        // 请求配置类型，可以为launch（启动）或attach（附加）
+        "request": "launch",
+        // 配置名称，将会在启动配置的下拉菜单中显示,免与其它项目一致
+        "name": "node_libs",
+        "skipFiles": [
+          "<node_internals>/**"
+        ],
+        "program": "${workspaceFolder}/Code/node_libs/serve.js",
+        "outFiles": [
+          "${workspaceFolder}/**/*.js"
+        ],
+        // 是否主动重启调试
+        "restart": true,
+        // 指定程序输出的位置：集成终端
+        "console": "integratedTerminal",
+        // 定义调试控制台的显示
+        "internalConsoleOptions": "neverOpen"
+      }
+    ]
+  }
