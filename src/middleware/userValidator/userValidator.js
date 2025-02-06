@@ -47,7 +47,32 @@ const loginParams = [
 
 const loginValidator = validate(loginParams)
 
+// 用户数据的检查更新
+const updateParams = [
+    body("email").custom(async(email) =>{
+        const res = await User.findOne({email});
+        if(res){
+            return Promise.reject("邮箱已经被注册")
+        }
+    }),
+    body("phone").custom(async(phone) =>{
+        const res = await User.findOne({phone});
+        if(res){
+            return Promise.reject("手机号已经被注册")
+        }
+    }),
+    body("username").custom(async(username) =>{
+        const res = await User.findOne({username});
+        if(res){
+            return Promise.reject("用户名已经被注册")
+        }
+    })
+]
+
+const updateValidator = validate(updateParams)
+
 module.exports={
     registerValidator,
-    loginValidator
+    loginValidator,
+    updateValidator
 }

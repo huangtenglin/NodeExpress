@@ -93,8 +93,31 @@ const loginController = async (req,res) =>{
   }
 }
 
+const updateController = async (req,res) =>{
+  try{
+    let id = req.user._id;
+    console.log(id,'htl->测试数据')
+    let dbData = await User.findByIdAndUpdate(id,req.body,{ new: true})
+    const originData = JSON.parse(JSON.stringify(dbData));
+    delete originData.password;
+    // 删除用户密码
+    res.status(202).json({ data: originData, code: 200, msg: "用户更新数据成功"})
+  }catch(error){
+    res.status(500).json({
+      code: 500,
+      msg: "服务器错误",
+      data:error,
+    })
+  }
+  res.status(202).json({
+    code: 200,
+    message: '获取数据成功'
+  })
+}
+
 module.exports = {
   registerController,
   getUsersController,
-  loginController
+  loginController,
+  updateController,
 };

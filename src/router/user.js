@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { registerController,getUsersController,loginController } = require("../controller/user")
+const { registerController,getUsersController,loginController,updateController } = require("../controller/user")
 const check = require("../utils/check.js")
-const { registerValidator,loginValidator } = require("../middleware/userValidator/userValidator")
+const { registerValidator,loginValidator,updateValidator } = require("../middleware/userValidator/userValidator")
 const { verifyToken } = require("../utils/jwt.js")
 
 // 中间件验证手机号码/邮箱验证
@@ -26,8 +26,9 @@ const validatePhoneMiddleware = (req,res,next) =>{
 }
 
 router.post("/register",registerValidator ,registerController)
-router.get("/",verifyToken,getUsersController)
+router.get("/lists",verifyToken,getUsersController)
 router.post("/login", loginValidator,loginController)
+router.put("/update", verifyToken, updateValidator,updateController)
 
 
 module.exports = router;

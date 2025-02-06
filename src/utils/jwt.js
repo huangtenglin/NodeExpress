@@ -20,7 +20,8 @@ const verifyToken = async(req,res,next) =>{
         return res.status(402).json({error: '请传入token'})
     }
     try{
-        await jwt.verify(token, unId);
+        let userinfo = await jwt.verify(token, unId);
+        req.user = userinfo;
         next();
     }catch(error){
         // 走到catch，说明验证不通过
